@@ -1,3 +1,33 @@
-<div class="container">
-  <h1>{{ title }}</h1>
+<div class="layout">
+  <app-sidebar
+    class="left"
+    [tags]="allTags()"
+    [activeTag]="activeTag()"
+    (createNote)="onCreateNote()"
+    (selectTag)="onSelectTag($event)"
+  ></app-sidebar>
+
+  <main class="main">
+    <header class="topbar">
+      <app-search-bar (search)="onSearch($event)"></app-search-bar>
+    </header>
+
+    <section class="content">
+      <div class="list-pane">
+        <app-note-list
+          [notes]="filteredNotes()"
+          [selectedId]="selectedId()"
+          (select)="onSelectNote($event)"
+        ></app-note-list>
+      </div>
+
+      <div class="editor-pane">
+        <app-note-editor
+          [note]="selectedNote()"
+          (save)="onSave($event)"
+          (remove)="onDelete($event)"
+        ></app-note-editor>
+      </div>
+    </section>
+  </main>
 </div>

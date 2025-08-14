@@ -1,0 +1,10 @@
+<div class="search-container">
+  <input
+    type="text"
+    [(ngModel)]="query"
+    (input)="onInput()"
+    placeholder="Search notes..."
+    aria-label="Search notes"
+  />
+  <button class="clear" (click)="clear()" title="Clear search" aria-label="Clear search">×</button>
+</div>
